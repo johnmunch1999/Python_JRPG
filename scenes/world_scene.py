@@ -38,16 +38,19 @@ TILE_COLORS = {
 }
 SOLID = {"#", "~"}
 DIR_VEC = {"down": (0, 1), "left": (-1, 0), "right": (1, 0), "up": (0, -1)}
-DIR_ROW = {"down": 0, "left": 1, "right": 2, "up": 3}
-
-
 def load_frames(res, char_index=0):
-    """devurandom sheet: 4 characters per row, each a 4x4 block of 16px cells
-    (3 walk frames per direction)."""
+    """devurandom sheet: 8 characters (4 per row), each in a 4x4 block of 16px
+    cells. Only 3 rows are used: 0 = front (down), 1 = side facing left,
+    2 = back (up); 3 walk frames each. Right is the left row mirrored."""
     sheet = res.image(CHAR_SHEET)
     ox, oy = (char_index % 4) * 4 * T, (char_index // 4) * 4 * T
-    return {d: [sheet.subsurface((ox + f * T, oy + row * T, T, T)) for f in range(3)]
-            for d, row in DIR_ROW.items()}
+
+    def row(r):
+        return [sheet.subsurface((ox + f * T, oy + r * T, T, T)) for f in range(3)]
+
+    left = row(1)
+    return {"down": row(0), "left": left, "up": row(2),
+            "right": [pygame.transform.flip(f, True, False) for f in left]}
 
 
 class Actor:
