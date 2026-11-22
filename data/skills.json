@@ -1,0 +1,65 @@
+{
+  "attack": {
+    "name": "공격",
+    "mp": 0,
+    "kind": "damage",
+    "target": "enemy",
+    "power": 1.0,
+    "description": "기본 공격.",
+    "fx": "slash"
+  },
+  "slash": {
+    "name": "강타",
+    "mp": 3,
+    "kind": "damage",
+    "target": "enemy",
+    "power": 1.6,
+    "description": "힘을 모아 적 하나를 강하게 벤다.",
+    "fx": "slash"
+  },
+  "whirl": {
+    "name": "회전베기",
+    "mp": 5,
+    "kind": "damage",
+    "target": "all_enemies",
+    "power": 0.8,
+    "description": "적 전체를 벤다.",
+    "fx": "slash"
+  },
+  "heal": {
+    "name": "힐",
+    "mp": 4,
+    "kind": "heal",
+    "target": "ally",
+    "heal": 20,
+    "description": "아군 하나의 HP를 회복한다.",
+    "fx": "heal"
+  },
+  "screech": {
+    "name": "초음파",
+    "mp": 0,
+    "kind": "damage",
+    "target": "all_enemies",
+    "power": 0.6,
+    "description": "날카로운 소리로 전원을 공격한다.",
+    "fx": "wave"
+  },
+  "bash": {
+    "name": "몽둥이질",
+    "mp": 0,
+    "kind": "damage",
+    "target": "enemy",
+    "power": 1.5,
+    "description": "있는 힘껏 내려친다.",
+    "fx": "slash"
+  },
+  "regen": {
+    "name": "재생",
+    "mp": 0,
+    "kind": "heal",
+    "target": "self",
+    "heal": 6,
+    "description": "몸을 다시 뭉친다.",
+    "fx": "heal"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "slime": {
+    "name": "슬라임",
+    "sprite": 1,
+    "hp": 12,
+    "atk": 5,
+    "def": 1,
+    "agi": 3,
+    "exp": 4,
+    "gold": 3,
+    "drops": [
+      {
+        "item": "potion",
+        "chance": 0.3
+      }
+    ],
+    "ai": [
+      {
+        "skill": "attack",
+        "weight": 4
+      },
+      {
+        "skill": "regen",
+        "weight": 3,
+        "when": "hp_below:0.5"
+      }
+    ]
+  },
+  "bat": {
+    "name": "박쥐",
+    "sprite": 5,
+    "hp": 9,
+    "atk": 6,
+    "def": 0,
+    "agi": 9,
+    "exp": 5,
+    "gold": 4,
+    "drops": [],
+    "ai": [
+      {
+        "skill": "attack",
+        "weight": 3
+      },
+      {
+        "skill": "screech",
+        "weight": 1
+      }
+    ]
+  },
+  "goblin": {
+    "name": "고블린",
+    "sprite": 12,
+    "hp": 18,
+    "atk": 8,
+    "def": 2,
+    "agi": 5,
+    "exp": 8,
+    "gold": 7,
+    "drops": [
+      {
+        "item": "ether",
+        "chance": 0.15
+      },
+      {
+        "item": "leather_armor",
+        "chance": 0.1
+      }
+    ],
+    "ai": [
+      {
+        "skill": "attack",
+        "weight": 3
+      },
+      {
+        "skill": "bash",
+        "weight": 2,
+        "when": "hp_below:0.5"
+      }
+    ]
+  }
+}

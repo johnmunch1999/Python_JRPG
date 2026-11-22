@@ -1,0 +1,14 @@
+{
+  "potion":        {"name": "포션",     "type": "consumable", "price": 10, "effect": {"hp": 25},
+                    "description": "HP를 25 회복한다."},
+  "ether":         {"name": "에테르",   "type": "consumable", "price": 30, "effect": {"mp": 10},
+                    "description": "MP를 10 회복한다."},
+  "wood_sword":    {"name": "나무 검",  "type": "weapon", "price": 20, "stats": {"atk": 2},
+                    "description": "연습용 목검."},
+  "iron_sword":    {"name": "철 검",    "type": "weapon", "price": 80, "stats": {"atk": 6},
+                    "description": "튼튼한 철제 장검."},
+  "cloth_armor":   {"name": "천 갑옷",  "type": "armor",  "price": 20, "stats": {"def": 1},
+                    "description": "얇은 천으로 만든 옷."},
+  "leather_armor": {"name": "가죽 갑옷", "type": "armor", "price": 60, "stats": {"def": 3, "agi": -1},
+                    "description": "질긴 가죽 갑옷. 조금 무겁다."}
+}
