@@ -1,8 +1,11 @@
 """Loads and caches assets. Works from source and from a PyInstaller bundle."""
 import os
+import random
 import sys
 
 import pygame
+
+import config
 
 
 def base_path() -> str:
@@ -21,6 +24,11 @@ class ResourceManager:
         self._fonts = {}
         self._sounds = {}
         self.sound_enabled = pygame.mixer.get_init() is not None
+        self.current_music = None
+        self._jingle_channel = None
+        if self.sound_enabled:
+            pygame.mixer.set_reserved(1)
+            self._jingle_channel = pygame.mixer.Channel(0)
 
     def image(self, rel: str) -> pygame.Surface:
         if rel not in self._images:
@@ -52,16 +60,43 @@ class ResourceManager:
             snd.set_volume(volume)
             snd.play()
 
-    def play_music(self, rel: str, loop: bool = True, volume: float = 0.5):
+    def sfx(self, name: str, volume: float = 1.0):
+        """Play a named effect from config.SFX."""
+        rel = config.SFX.get(name)
+        if isinstance(rel, list):
+            rel = random.choice(rel)
+        if rel:
+            self.play(rel, volume * config.SFX_VOLUME)
+
+    def music(self, name: str | None, fade_ms: int = 400):
+        """Switch BGM by name (config.BGM). Same track keeps playing; None stops."""
+        if name == self.current_music:
+            return
+        self.current_music = name
         if not self.sound_enabled:
             return
+        if name is None:
+            pygame.mixer.music.fadeout(fade_ms)
+            return
+        if self._jingle_channel:
+            self._jingle_channel.fadeout(200)
         try:
-            pygame.mixer.music.load(asset_path(rel))
-            pygame.mixer.music.set_volume(volume)
-            pygame.mixer.music.play(-1 if loop else 0)
-        except pygame.error:
+            pygame.mixer.music.load(asset_path(config.BGM[name]))
+            pygame.mixer.music.set_volume(config.MUSIC_VOLUME)
+            pygame.mixer.music.play(-1, fade_ms=fade_ms)
+        except (pygame.error, KeyError):
             pass
 
+    def jingle(self, name: str):
+        """Stop the BGM and play a short fanfare on its own channel."""
+        self.music(None, 150)
+        snd = self.sound(config.JINGLES[name])
+        if snd and self._jingle_channel:
+            snd.set_volume(config.MUSIC_VOLUME)
+            self._jingle_channel.play(snd)
+
+    def jingle_playing(self) -> bool:
+        return bool(self._jingle_channel and self._jingle_channel.get_busy())
+
     def stop_music(self, fade_ms: int = 300):
-        if self.sound_enabled:
-            pygame.mixer.music.fadeout(fade_ms)
+        self.music(None, fade_ms)

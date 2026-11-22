@@ -20,6 +20,7 @@
 | 전투 배경 10종 + 패럴랙스 레이어 | [Backgrounds](https://opengameart.org/content/backgrounds-3) (BG 2.0) | Nidhoggn | CC0 | `BG 2.0.7z` | `assets/backgrounds/nidhoggn_battlebacks/` |
 | 판타지 풍경 배경 | [Fantasy Background](https://opengameart.org/content/fantasy-background) | OpenGameArt 업로더 | CC0 | `back2.png`, `back_0.png` | `assets/backgrounds/fantasy_background/` |
 | 한글 픽셀 폰트 | [Galmuri](https://github.com/quiple/galmuri) v2.40.4 | Lee Minseo (quiple) | **SIL OFL 1.1** | `Galmuri-v2.40.4.zip` 중 `Galmuri11.ttf`, `Galmuri11-Bold.ttf`, `Galmuri9.ttf` | `assets/fonts/galmuri/` |
+| 타이틀·마을·들판 BGM, 승리·레벨업·게임오버 징글 | 프로젝트 자체 제작 (`tools/make_music.py`로 생성한 칩튠) | 이 프로젝트 | 프로젝트 소유 (외부 라이선스 없음) | - | `assets/bgm/generated/` |
 
 ## 라이선스 준수 사항
 - **Galmuri (OFL 1.1):** 배포물에 `assets/fonts/galmuri/LICENSE.txt`를 함께 넣어야 합니다. 폰트 파일만 따로 판매할 수 없습니다.
@@ -31,7 +32,7 @@
 ## 추가 검토 후보
 | 분류 | 에셋 | 비고 |
 | :--- | :--- | :--- |
-| 마을·필드 BGM | [CC0 Music 컬렉션](https://opengameart.org/content/cc0-music-1) | "Town Theme RPG" 등 곡마다 라이선스 확인 후 선정 |
+| 마을·필드 BGM (교체용) | [CC0 Music 컬렉션](https://opengameart.org/content/cc0-music-1) | 현재는 자체 제작 칩튠 사용. 더 풍성한 곡이 필요하면 곡마다 라이선스 확인 후 선정 |
 
 ## 제외
 - Tuxemon Set 1 (CC-BY-SA 4.0), Tricolor NES Static Monster Graphics (OGA-BY), Fantasy Front Battle Enemies (CC-BY-SA), Pixel-art Battlers (CC-BY 4.0), 12 battle backgrounds 240x110 (CC-BY/GPL), Battle Background - Hazy Hills (CC-BY): CC0 아님

@@ -2,7 +2,6 @@
 import config
 from gui.window import draw_cursor, draw_text, draw_window
 
-SND_NEXT = "sounds/kenney_rpg_audio/OGG/bookFlip1.ogg"
 
 
 class DialogueBox:
@@ -39,7 +38,7 @@ class DialogueBox:
             elif self.page + 1 < len(self.pages):
                 self.page += 1
                 self.shown = 0
-                self.res.play(SND_NEXT, 0.4)
+                self.res.sfx("text", 0.7)
             else:
                 self.finished = True
         return self.finished

@@ -1,0 +1,7 @@
+{
+  "party": ["hero"],
+  "gold": 50,
+  "inventory": {"potion": 3, "ether": 1},
+  "equipment": {"hero": {"weapon": "wood_sword", "armor": "cloth_armor"}},
+  "location": {"map": "village", "x": 4, "y": 6, "facing": "down"}
+}

@@ -1,0 +1,8 @@
+{
+  "hero": {
+    "name": "용사", "sprite_index": 0,
+    "base": {"hp": 30, "mp": 10, "atk": 8, "def": 4, "agi": 6},
+    "growth": {"hp": 6, "mp": 2, "atk": 2, "def": 1, "agi": 1},
+    "skills": ["slash", "heal", "whirl"]
+  }
+}

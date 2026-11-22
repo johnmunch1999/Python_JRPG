@@ -9,8 +9,8 @@ class MenuScene(Scene):
     transparent = True
 
     def on_enter(self):
-        self.menu = MenuList(self.res, [("아이템", False), ("장비", False), ("상태", False),
-                                        ("저장", False), "타이틀로", "닫기"],
+        self.menu = MenuList(self.res, ["아이템", "장비", "상태",
+                                        "저장", "타이틀로", "닫기"],
                              (228, 4, 88, 106))
         self.font = self.res.font(config.FONT_MAIN, config.FONT_SIZE)
         self.small = self.res.font(config.FONT_SMALL, config.FONT_SIZE_SMALL)
@@ -22,13 +22,23 @@ class MenuScene(Scene):
         choice = self.menu.update(self.input, dt)
         if choice in (-1, 5):
             self.engine.scenes.pop()
+        elif choice in (0, 1, 2):
+            from scenes import field_menus
+            scene = (field_menus.ItemScene, field_menus.EquipScene, field_menus.StatusScene)[choice]
+            self.engine.scenes.push(scene(self.engine))
+        elif choice == 3:
+            from scenes.save_slot_scene import SaveSlotScene
+            self.engine.scenes.push(SaveSlotScene(self.engine, "save"))
         elif choice == 4:
             from scenes.title_scene import TitleScene
             self.engine.scenes.change(TitleScene(self.engine))
 
     def draw(self, surface):
         draw_window(surface, (4, 4, 220, 50))
-        draw_text(surface, self.font, "용사   Lv 1", (12, 9))
-        draw_text(surface, self.font, "HP 30/30   MP 10/10", (12, 25))
-        draw_text(surface, self.small, "회색 항목은 이후 단계에서 구현", (12, 40), config.COLOR_TEXT_DIM)
+        st = self.engine.state
+        c = st.leader
+        draw_text(surface, self.font, f"{c.name}   Lv {c.level}    {st.gold} G", (12, 9))
+        draw_text(surface, self.font, f"HP {c.hp}/{c.max_hp}   MP {c.mp}/{c.max_mp}", (12, 25))
+        draw_text(surface, self.small, f"공격 {c.stat('atk')}  방어 {c.stat('def')}  민첩 {c.stat('agi')}",
+                  (12, 40), config.COLOR_TEXT_DIM)
         self.menu.draw(surface)
