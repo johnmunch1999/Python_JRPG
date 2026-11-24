@@ -26,9 +26,11 @@ import sys as _sys
 
 BASE_DIR = getattr(_sys, "_MEIPASS", _os.path.dirname(_os.path.abspath(__file__)))
 DATA_DIR = _os.path.join(BASE_DIR, "data")
-# Dev: ./saves/game.db. Override with JRPG_SAVE_DB (tests, or a user-data folder on release).
-SAVE_DB = _os.environ.get("JRPG_SAVE_DB") or _os.path.join(
-    _os.path.dirname(_os.path.abspath(__file__)), "saves", "game.db")
+# Dev: ./saves/game.db. Frozen exe: saves/ next to the .exe (the bundle dir is a
+# temp folder wiped on exit). Override with JRPG_SAVE_DB (tests, custom location).
+_APP_DIR = (_os.path.dirname(_os.path.abspath(_sys.executable)) if getattr(_sys, "frozen", False)
+            else _os.path.dirname(_os.path.abspath(__file__)))
+SAVE_DB = _os.environ.get("JRPG_SAVE_DB") or _os.path.join(_APP_DIR, "saves", "game.db")
 SAVE_SLOTS = 3
 
 # --- Audio ---------------------------------------------------------
