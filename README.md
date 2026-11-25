@@ -11,7 +11,7 @@ Python을 설치하지 않아도 됩니다.
 
 - 세이브는 exe와 같은 폴더의 `saves\game.db`에 저장됩니다. 그래서 `Program Files`처럼 쓰기 권한이 없는 폴더에 두면 저장이 안 될 수 있습니다.
 - 처음 실행할 때 Windows SmartScreen 경고가 나올 수 있습니다. 서명되지 않은 exe라서 그렇습니다. "추가 정보 → 실행"을 누르면 됩니다.
-- exe는 저장소 파일에 포함되어 있지 않습니다. 용량이 커서(약 44MB) Releases에만 올립니다.
+- 같은 exe가 저장소의 [dist/ClassicJRPG.exe](dist/ClassicJRPG.exe)에도 있습니다(약 44MB). 파일 화면에서 "Download raw file"로 받을 수 있습니다.
 
 조작: 방향키 이동, `Z`/`Enter` 확인, `X`/`Esc` 취소
 
@@ -33,7 +33,7 @@ python -m venv .venv
 .venv\Scripts\pyinstaller --noconfirm --clean game.spec
 ```
 
-결과물은 `dist\ClassicJRPG.exe`에 생깁니다. (`build/`, `dist/`, `.venv/`는 git에서 제외됩니다.)
+결과물은 `dist\ClassicJRPG.exe`에 생깁니다. `dist/`에서는 이 exe만 git에 올라가고, 실행하면서 생긴 `dist\saves` 같은 파일은 제외됩니다. (`build/`와 `.venv/`도 제외)
 
 ## 라이선스
 

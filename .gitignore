@@ -2,6 +2,7 @@ __pycache__/
 *.pyc
 saves/*.db
 build/
-dist/
+dist/*
+!dist/ClassicJRPG.exe
 *.spec.bak
 .venv/
